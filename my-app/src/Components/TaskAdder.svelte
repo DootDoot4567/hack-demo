@@ -1,8 +1,11 @@
 <script>
-   import Card from './Card.svelte'; 
-   import Button from './Button.svelte'; 
+   import Card from './Card.svelte'
+   import Button from './Button.svelte'
+   import TimePicker from './TimePicker.svelte'
+    let selectedTime = ""
     import {v4 as uuidv4} from 'uuid'
     import {createEventDispatcher} from 'svelte'
+
     
     const dispatch = createEventDispatcher()
 
@@ -26,15 +29,18 @@
       if(text.trim().length > min){
         const newTask = {
           id: uuidv4(),
-          text
+          text,
+          time: selectedTime
         }
 
         dispatch('add-task', newTask)
 
         text = ''
+        selectedTime = ""
       }
     }
 </script>
+
 
 <Card>
   <header>
@@ -45,6 +51,7 @@
     <input type="text" on:input={handleInput} bind:value = {text} placeholder="Lets be productive">
     <Button disabled={btnDisabled} type="submit">Send</Button>
   </div>
+  <TimePicker bind:time={selectedTime} />
   {#if message}
     <div class= "message">
       {message}
