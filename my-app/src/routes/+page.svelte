@@ -1,4 +1,8 @@
 <!-- <script>
+    import Task from "./Nested/Task.svelte";
+
+</script> -->
+<!-- <script>
     let title = "Welcome to Our Site!";
     let subtitle = "We are glad you're here.";
 </script>
@@ -54,8 +58,8 @@ const deleteTask = (e) => {
     <TaskList {task} on:delete-task={deleteTask} />
 </main> -->
 
-<!-- <script>
+<script>
     import Task from "./Nested/Task.svelte";
 </script>
 
-<Task/> -->
+<Task/>

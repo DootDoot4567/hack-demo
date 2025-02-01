@@ -1,6 +1,5 @@
 <script>
     import {createEventDispatcher} from 'svelte'
-    import Card from './Card.svelte'
     export let item
     const dispatch = createEventDispatcher()
     const handleDelete = (itemId) => {
@@ -8,23 +7,13 @@
     }
 </script>
 
-<Card>
+<div class="relative bg-white dark:bg-gray-800 border-2xl px-8 pt-[20px]">
     <div class = "num-display">
         {item.rating}
     </div>
-    <div class="close">X</div>
+    <div class="absolute mt-3 mr-5 cursor-pointer bg-none border-none">X</div>
     <button class="close" on:click={() =>handleDelete(item.id)}>X</button>
     <p class="text-display">
         {item.text}
     </p>
-</Card>
-<style>
-    .close{
-        position: absolute;
-        top: 10px;
-        right: 20px;
-        cursor: pointer;
-        background: none;
-        border: none;
-    }
-</style>
+</div>

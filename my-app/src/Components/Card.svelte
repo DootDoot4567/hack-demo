@@ -1,13 +1,3 @@
-<div class="card">
+<div class="relative bg-white rounded-2xl p-[40px] mt-[20px]">
     <slot></slot>
 </div>
-<style>
-    .card{
-        background-color: #fff;
-        color: #333;
-        border-radius: 15px;
-        padding: 40px 50px;
-        margin: 20px 0;
-        position: relative;
-    }
-</style>
