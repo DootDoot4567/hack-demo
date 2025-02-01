@@ -9,4 +9,5 @@
     <div in:scale out:scale>
         <TaskItem item={fb} on:delete-task />
     </div>
+
 {/each}
