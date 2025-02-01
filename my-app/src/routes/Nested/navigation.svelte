@@ -1,6 +1,7 @@
 <script>
     import { page } from '$app/stores';
     import { onMount } from 'svelte';
+    import Login from "./Login.svelte"
 
     let isOpen = false;
 
@@ -87,6 +88,7 @@
                     </li>
                 </ul>
             </div>
+            <Login />
     </div>
     <!-- <div class="sm:h-16 h-20 mx-auto sm:px-4 container flex items-center justify-between flex-wrap sm:flex-nowrap sm:hidden block">
         <div class="flex justify-center w-full">

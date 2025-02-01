@@ -14,7 +14,7 @@
 </script>
 
 <dialog 
-    class="bg-transparent backdrop:bg-black backdrop:bg-opacity-50 p-0 m-0 border-none rounded-lg shadow-lg fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" 
+    class="bg-transparent backdrop:bg-black backdrop:bg-opacity-60 p-0 m-0 border-none rounded-lg shadow-lg fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" 
     bind:this={dialog} 
     on:close={closeModal}>
 
