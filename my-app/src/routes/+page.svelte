@@ -1,70 +1,82 @@
-<!-- <h1>Welcome to your library project.</h1>
-<p>Create your package using @sveltejs/package and preview/showcase your work with SvelteKit</p>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p> 
+
 
 <script>
-    let title = "Welcome to Our Site!";
-    let subtitle = "We build amazing web experiences with Svelte.";
-  </script>
-  
-  <main class="min-h-screen bg-gradient-to-r from-purple-500 to-indigo-500 flex flex-col items-center justify-center text-white">
-    <h1 class="text-5xl font-bold mb-4">{title}</h1>
-    <p class="text-xl mb-8">{subtitle}</p>
-    <button class="bg-white text-purple-600 font-semibold py-2 px-6 rounded-2xl shadow-lg hover:bg-purple-100 transition duration-300">
-      Get Started
-    </button>
-  </main>
-  
-  <style>
-    main {
-      font-family: 'Arial', sans-serif;
-    }
-  </style> -->
+    import { auth } from '../firebase.js'; // Correct path to firebase.js
+    import { signInWithEmailAndPassword } from 'firebase/auth';  // Import function from 'firebase/auth'
 
-  <!-- <script>
-  let title = "Welcome to Our Site!";
-  let subtitle = "We are glad you're here.";
+
+    let backgroundColor = 'Red';
+    let email = '';
+    let password = '';
+
+    const signIn = async () => {
+      try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        console.log('User signed in:', userCredential.user);
+      } catch (error) {
+        console.log({email});
+        console.log({password});
+        console.error(error);
+      }
+    };
 </script>
 
-<main class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-purple-500 to-indigo-600 text-white">
-  <header>
-    <h1 class="text-4xl font-bold mb-4" tabindex="0">{title}</h1>
-    <p class="text-xl mb-8" tabindex="0">{subtitle}</p>
-  </header>
-
-  <nav aria-label="Main navigation">
-    <a href="#about" class="px-6 py-3 bg-white text-purple-600 rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-300 hover:bg-purple-100 transition" role="button">Learn More</a>
-  </nav>
-
-  <footer class="mt-10" tabindex="0">
-    <p>&copy; 2025 Our Company</p>
-  </footer>
-</main>
-
 <style>
-  main {
-    font-family: Arial, sans-serif;
-  }
-  h1, p, footer p {
-    text-align: center;
-  }
-  a {
-    cursor: pointer;
-  }
-</style> -->
-
-<script>
-    let title = "Welcome to Our Site!";
-    let subtitle = "We are glad you're here.";
-  </script>
+    /* Center the container and textboxes */
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; /* Full viewport height */
+      flex-direction: column; /* Stack the items vertically */
+    }
   
-  <main class="h-screen flex flex-col items-center justify-center bg-gradient-to-r from-purple-500 to-indigo-600 text-white">
-    <h1 class="text-5xl font-bold mb-4" tabindex="0">{title}</h1>
-    <p class="text-xl mb-8" tabindex="0">{subtitle}</p>
-    <button class="px-6 py-3 bg-white text-purple-700 font-semibold rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50" aria-label="Learn more about us">
-      Learn More
+    .input-group {
+      margin: 10px;
+    }
+  
+    input {
+      padding: 8px;
+      font-size: 16px;
+      margin: 10px;
+      width: 200px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+  button:hover {
+    background-color: #45a049;
+  }
+
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  </style>
+  
+  <div class="container">
+    <div class="input-group">
+      <input type="text" bind:value={email} placeholder="Email">
+    </div>
+    <div class="input-group">
+      <input type="text" bind:value={password} placeholder="Password">
+    </div>
+    <button on:click={signIn} disabled={!(email && password)}>
+      Sign In
     </button>
-  </main>
+  </div>
+  
   
   <!-- <script>
     let title = "Welcome to Our Site!";
