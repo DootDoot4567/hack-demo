@@ -11,11 +11,11 @@
 		Learn More
 		</button>
 	</a>
-</main>
-   -->
+</main> -->
+  
 
 <!-- NPM install UUID -->
-<script>
+<!-- <script>
     import TaskList from '../Components/TaskList.svelte'
     import TaskStats from '../Components/TaskStats.svelte'
     import TaskAdder from '../Components/TaskAdder.svelte'
@@ -52,4 +52,10 @@ const deleteTask = (e) => {
     <TaskAdder on:add-task={addTask} />
     <TaskStats {count} {finished}/>
     <TaskList {task} on:delete-task={deleteTask} />
-</main>
+</main> -->
+
+<!-- <script>
+    import Task from "./Nested/Task.svelte";
+</script>
+
+<Task/> -->
