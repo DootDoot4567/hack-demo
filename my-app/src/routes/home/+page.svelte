@@ -1,5 +1,5 @@
 <script>
-    import FormInput from "./Nested/FormInput.svelte"
+    import FormInput from "../Nested/FormInput.svelte"
 
 </script>
 
