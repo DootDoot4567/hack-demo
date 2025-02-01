@@ -1,68 +1,38 @@
 <script>
-	export let showModal; // boolean
+    import { showModal } from '../../store.js';
+    let dialog;
 
-	let dialog; // HTMLDialogElement
+    // Reactive statement to show the modal
+    $: if (dialog && $showModal) {
+      dialog.showModal(); // Show the modal when $showModal is true
+    }
 
-	$: if (dialog && showModal) dialog.showModal();
+    const closeModal = () => {
+      showModal.set(false); // Close the modal by setting the store to false
+      dialog.close(); // Close the <dialog> element itself
+    };
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->
-<dialog
-	bind:this={dialog}
-	on:close={() => (showModal = false)}
-	on:click|self={() => dialog.close()}
->
-	<!-- svelte-ignore a11y-no-static-element-interactions -->
-	<div on:click|stopPropagation>
-		<slot name="header" />
-		<hr />
-		<slot />
-		<hr />
-		<!-- svelte-ignore a11y-autofocus -->
-		<button class ="flex ms-auto inline-flex justify-center items-center absolute right-3 top-2" autofocus on:click={() => dialog.close()}>
-			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-				<path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-			</svg>			  
-		</button>
-	</div>
-</dialog>
+<dialog 
+    class="bg-transparent backdrop:bg-black backdrop:bg-opacity-60 p-0 m-0 border-none rounded-lg shadow-lg fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" 
+    bind:this={dialog} 
+    on:close={closeModal}>
 
-<style>
-	dialog {
-		max-width: 32em;
-		border-radius: 0.2em;
-		border: none;
-		padding: 0;
-	}
-	dialog::backdrop {
-		background: rgba(0, 0, 0, 0.3);
-	}
-	dialog > div {
-		padding: 1em;
-	}
-	dialog[open] {
-		animation: zoom 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-	}
-	@keyframes zoom {
-		from {
-			transform: scale(0.95);
-		}
-		to {
-			transform: scale(1);
-		}
-	}
-	dialog[open]::backdrop {
-		animation: fade 0.2s ease-out;
-	}
-	@keyframes fade {
-		from {
-			opacity: 0;
-		}
-		to {
-			opacity: 1;
-		}
-	}
-	button {
-		display: block;
-	}
-</style>
+        <div>
+            <slot name="header" />
+            <hr />
+            <slot />
+            <hr />
+            
+            <!-- Close Button with SVG -->
+            <button 
+                class="flex ms-auto inline-flex justify-center items-center absolute right-3 top-2" 
+                autofocus 
+                on:click={closeModal}>
+
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>			  
+            </button>
+        </div>
+</dialog>
