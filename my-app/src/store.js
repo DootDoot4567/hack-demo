@@ -1,3 +1,6 @@
 import { writable } from 'svelte/store';
 
-export const showModal = writable(false); // Writable store to control modal visibility
+export const modalState = writable({
+    login: false,
+    task: false,
+});
