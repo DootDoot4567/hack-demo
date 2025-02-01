@@ -1,3 +1,4 @@
+<!-- NPM install UUID -->
 <script>
     import TaskList from '../../Components/TaskList.svelte'
     import TaskStats from '../../Components/TaskStats.svelte'
@@ -31,8 +32,8 @@ const deleteTask = (e) => {
 }
 </script>
 
-<main class="min-h-screen bg-red-700">
+<main class="min-h-screen bg-gray-200">
     <TaskAdder on:add-task={addTask} />
     <TaskStats {count} {finished}/>
     <TaskList {task} on:delete-task={deleteTask} />
-</main>
+</main> 
