@@ -3,8 +3,6 @@
 	import Navbar from "./Nested/navigation.svelte";
 	import '../app.css';
 	let { children } = $props();
-	
-	
 </script>
 
 <!-- {@render children()} -->

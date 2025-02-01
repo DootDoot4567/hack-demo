@@ -1,7 +1,6 @@
-<div>
+<script>
+    import FormInput from "./Nested/FormInput.svelte"
 
-    a nsjkanjkjs
+</script>
 
-    ajnkdjaksd
-    balls
-</div>
+<FormInput />
