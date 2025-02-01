@@ -21,7 +21,7 @@ const deleteTask = (e) => {
 }
 </script>
 
-<main class="min-h-screen bg-gray-200">
+<main class="w-[100%] h-[100%] bg-transparent">
     <TaskAdder on:add-task={addTask} />
     <TaskStats {count} {finished}/>
     <TaskList {task} on:delete-task={deleteTask} />

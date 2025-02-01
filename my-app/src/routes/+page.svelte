@@ -45,7 +45,7 @@ const deleteTask = (e) => {
     <TaskAdder on:add-task={addTask} />
     <TaskStats {count} {finished}/>
     <TaskList {task} on:delete-task={deleteTask} />
-</main>  -->
+</main> -->
 
 <!-- <script>
     import Task from "./Nested/Task.svelte";

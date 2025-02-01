@@ -10,9 +10,9 @@
 
 <Modal modalKey="task">
     <div class="flex flex-col items-center justify-center w-[660px] h-[530px] bg-white rounded-lg shadow-lg pb-64">
-        <h2 class="text-xl font-semibold pt-4">Task Modal</h2>
+        <h2 class="text-xl font-semibold pt-4">Your Tasks</h2>
         <!-- Task content goes here -->
-        <div class="pt-96">
+        <div class="">
             <Task/> 
         </div>
         
