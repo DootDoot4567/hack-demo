@@ -9,11 +9,13 @@
 </button>
 
 <Modal modalKey="task">
-    <div class="flex flex-col items-center justify-center w-[360px] h-[430px] bg-white rounded-lg shadow-lg">
+    <div class="flex flex-col items-center justify-center w-[660px] h-[530px] bg-white rounded-lg shadow-lg pb-64">
         <h2 class="text-xl font-semibold pt-4">Task Modal</h2>
         <!-- Task content goes here -->
-
-        <Task/>
+        <div class="pt-96">
+            <Task/> 
+        </div>
+        
 
     </div>
 </Modal>
