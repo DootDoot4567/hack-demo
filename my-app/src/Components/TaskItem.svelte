@@ -13,4 +13,7 @@
     <p class="text-display">
         {item.text}
     </p>
+    <h3> 
+        {item.time}
+    </h3>
 </Card>

@@ -3,7 +3,8 @@
     import Button from './Button.svelte'; 
      import {v4 as uuidv4} from 'uuid'
      import {createEventDispatcher} from 'svelte'
-     
+     import TimePicker from './TimePicker.svelte'
+     let selectedTime = ""
      const dispatch = createEventDispatcher()
      let text = ''
      let btnDisabled = true
@@ -22,10 +23,12 @@
        if(text.trim().length > min){
          const newTask = {
            id: uuidv4(),
-           text
+           text,
+           time: selectedTime
          }
          dispatch('add-task', newTask)
-         text = ''
+         text = '',
+         selectedTime = ""
        }
      }
  </script>
@@ -38,6 +41,7 @@
      <input type="text" on:input={handleInput} bind:value = {text} placeholder="Lets be productive">
      <Button disabled={btnDisabled} type="submit">Send</Button>
    </div>
+   <TimePicker bind:time={selectedTime} />
    {#if message}
      <div class= "pt-[10px] text-center bg-violet-900">
        {message}
