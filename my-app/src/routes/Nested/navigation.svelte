@@ -1,13 +1,16 @@
 <script>
     import { page } from '$app/stores';
     import { onMount } from 'svelte';
-    import SignUp from "./SignUp.svelte"
     import Auth from "./Auth.svelte"
 
     let isOpen = false;
+    let isLogin = false;
 
     const toggleMenu = () => {
         isOpen = !isOpen;
+    };
+    const toggleLogin = () => {
+        isLogin = !isLogin;
     };
 
     onMount(() => {
@@ -93,8 +96,10 @@
                     <li class="{$page.url.pathname == '/multi-run' ? 'text-indigo-500' : ''} md:px-4 md:py-2 hover:text-indigo-600 text-xl">
                         <a href="/multi-run">Multi Run</a>
                     </li>
-                    <li>
-                        <Auth />
+                    <li class="md:px-4 md:py-2 hover:text-indigo-600 text-xl">
+                        <button on:click={toggleLogin} class="focus:outline-none">
+                            Log In
+                        </button>
                     </li>
                 </ul>
             </div>
@@ -133,3 +138,6 @@
     </div>
 </nav>
 
+{#if isLogin}
+    <Auth />
+{/if}

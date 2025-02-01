@@ -1,86 +1,103 @@
 <script>
-    import { authHandlers, authStore } from '../../stores/authStores';
+	import { authHandlers, authStore } from '../../stores/authStores';
 
-    let register = false; 
-    let email = '';
-    let password = '';
-    let confirmPassword = '';
+	let register = false;
+	let email = '';
+	let password = '';
+	let confirmPassword = '';
 
-    async function handleSubmit () {
-        if (!email || !password || (register && !confirmPassword)) {
-            return;
-        }
-        if (register && password === confirmPassword) {
-            try {
-                await authHandlers.signup(email, password)
-            } catch (err){
-                console.log(err);
-            }
-        } else {
-            try {
-                await authHandlers.login(email, password)
-            } catch (err){
-                console.log(err);
-            }
-            if ($authStore.currentUser) {
-			    window.location.href = '/research';
-		    }
-        }
-    }
+	async function handleSubmit() {
+		if (!email || !password || (register && !confirmPassword)) {
+			console.log("Please fill in all fields");
+			return;
+		}
+
+		if (register && password !== confirmPassword) {
+			console.log("Passwords do not match");
+			return;
+		}
+
+		try {
+			if (register) {
+				await authHandlers.signup(email, password);
+			} else {
+				await authHandlers.login(email, password);
+			}
+			if ($authStore.currentUser) {
+				window.location.href = '/research';
+			}
+		} catch (err) {
+			console.log(err);
+		}
+	}
 </script>
 
-<div class="flex flex-col items-center justify-center w-[360px] h-[430px] bg-white rounded-lg shadow-lg">
+<!-- Background Overlay -->
+<div class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+	<!-- Modal Container -->
+	<div class="bg-white p-6 rounded-lg shadow-xl w-96">
+		<!-- Title -->
+		<h2 class="text-2xl font-bold text-center mb-4">{register ? 'Register' : 'Log In'}</h2>
 
-    <h2 class="text-xl font-semibold pt-4">{register ? 'Register':"Log In"}</h2>
+		<!-- Form Inputs -->
+		<form class="flex flex-col space-y-3">
+			<input
+				bind:value={email}
+				type="email"
+				placeholder="Email"
+				class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+			/>
 
-    <!-- Input container -->
-    <div class="w-[75%] max-w-sm min-w-[200px] pt-4">
-        <div class="flex flex-col space-y-4 relative">
-            <!-- Email Input -->
-                <label>
-                <input
-                bind:value={email}
-                type="text"
-                placeholder="Email"
-                class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-500 hover:border-slate-300 shadow-lg shadow-gray-100 ring-4 ring-transparent focus:ring-slate-100"
-                />
-                </label>
+			<input
+				bind:value={password}
+				type="password"
+				placeholder="Password"
+				class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+			/>
 
-                <label>
-                <!-- Password Input -->
-                <input
-                bind:value={password}
-                type="password"
-                placeholder="Password"
-                class="w-full pl-3 pr-3 py-2 bg-transparent placeholder:text-slate-400 text-slate-600 text-sm border border-slate-200 rounded-md transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
-                />
-                </label>
+			{#if register}
+				<input
+					bind:value={confirmPassword}
+					type="password"
+					placeholder="Confirm Password"
+					class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+				/>
+			{/if}
 
-            {#if register} 
-                <label>
-                    <input
-                    bind:value={confirmPassword}
-                    type="password"
-                    placeholder="Confirm Password"/>
-                </label>
-            {/if}
-            <!-- Sign Up Button -->
-            <button
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                on:click={handleSubmit}
-            >
-                Sign Up
-            </button>
-            {#if register} 
-                <div on:click={() => {
-                    register = false;
-                }} on:keydown={() => {}}>Already have an account?<p>Log In</p></div>
-            {:else}
-                <div on:click={() => {
-                    register = true;
-                }} on:keydown={() => {}}>
-                Don't have an account?<p>Sign Up</p></div>
-            {/if}
-        </div>
-    </div>
- </div>
+			<!-- Submit Button -->
+			<button
+				type="button"
+				on:click={handleSubmit}
+				class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-300"
+			>
+				{register ? 'Sign Up' : 'Log In'}
+			</button>
+		</form>
+
+		<!-- Toggle Register/Login -->
+		<div class="text-center mt-4">
+			<p
+				role="button"
+				tabindex="0"
+				on:click={() => (register = !register)}
+				class="text-blue-500 hover:underline cursor-pointer"
+			>
+				{register ? 'Already have an account? Log in' : "Don't have an account? Sign up"}
+			</p>
+		</div>
+
+		<!-- Forgot Password -->
+		{#if !register}
+			<div class="text-center mt-2">
+				<p
+					role="button"
+					tabindex="0"
+					on:click={() => authHandlers.resetPassword(email)}
+					class="text-gray-500 hover:underline cursor-pointer"
+				>
+					Forgot Password?
+				</p>
+			</div>
+		{/if}
+	</div>
+</div>
