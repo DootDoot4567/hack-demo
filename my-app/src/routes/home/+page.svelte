@@ -1,6 +1,6 @@
 <script>
-    import FormInput from "../Nested/FormInput.svelte"
+    import Login from "../Nested/Login.svelte"
 
 </script>
 
-<FormInput />
+<Login />
