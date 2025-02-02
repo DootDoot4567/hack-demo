@@ -107,7 +107,9 @@
                 <!-- <li class="{$page.url.pathname == '/milestone' ? 'text-indigo-500' : ''} md:px-4 md:py-2 hover:text-indigo-600 text-xl">
                 <a href="/milestone">milestone</a>
                 </li> -->
-                
+                <li class="{$page.url.pathname == '/milestone' ? 'text-indigo-500' : ''} md:px-4 md:py-2 hover:text-indigo-600 text-xl">
+                    <a href="/milestone">Milestone</a>
+                </li>
                 <li class="relative group pt-[7px]">
                     <!-- SVG Icon that will trigger hover -->
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-8 hover:text-gray-600 group">
