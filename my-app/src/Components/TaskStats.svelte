@@ -2,7 +2,7 @@
     export let count
     export let finished
 </script>
-<div class="flex justify-between items-center">
-    <h4>{count} Tasks Remaining </h4>
+<div class="flex flex-col right-0">
+    <h4>Tasks Remaining: {count}</h4>
     <h4>Tasks Completed: {finished}</h4>
 </div>
