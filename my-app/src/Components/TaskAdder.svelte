@@ -33,18 +33,25 @@
      }
  </script>
  <Card>
+
    <header class="max-[400px]: margin-auto ">
-     <h2 class="text-xl font-semibold text-center">Your tasks:</h2>
+    	<h2 class="text-xl font-semibold text-center pb-6">Add Tasks:</h2>
    </header>
+
    <form on:submit|preventDefault = {handleSubmit}>
-   <div class="text-black border-0 rounded-md px-5 py-2 bg-blue-500 text-base cursor-pointer transition-colors duration-300 ease-in-out hover:bg-blue-700">
-     <input type="text" on:input={handleInput} bind:value = {text} placeholder="Lets be productive">
-     <Button disabled={btnDisabled} type="submit">Submit</Button>
+	<div class="flex flex-col items-center justify-center text-black rounded-md bg-black-200 text-base cursor-pointer">
+		<div class="w-full flex flex-row justify-between py-8 border-1 border-black rounded-sm">
+			<div class="max-w-sm min-w-[200px]">
+				<input class="w-auto bg-rose-50 placeholder:text-gray-500 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-600 shadow-lg focus:shadow" on:input={handleInput} bind:value = {text} placeholder="Task Name">
+			</div>
+			<TimePicker bind:time={selectedTime} on:update-time={(e) => selectedTime = e.detail} />
+		</div>
+		<Button disabled={btnDisabled} type="submit">Submit</Button>
    </div>
-   <TimePicker bind:time={selectedTime} />
+
    {#if message}
-     <div class= "pt-[10px] text-center bg-violet-900">
-       {message}
-     </div>
+		<div class= "py-2 rounded-lg justify-center text-sm font-semibold text-center mt-2 bg-violet-100">
+		{message}
+		</div>
    {/if}
  </Card>

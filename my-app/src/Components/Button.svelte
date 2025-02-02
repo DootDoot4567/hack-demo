@@ -1,12 +1,10 @@
 <script>
   export let type = 'button'
-  export let disabled = false
 </script>
 
-<button {type} {disabled} class= "text-white border-0 px-5 py-2 bg-blue-500 rounded cursor-pointer button:disabled: bg-gray-200 border-gray-800 cursor-auto
-button:disabled:hover: scale-[1] opacity-[1] button:hover: scale-[.98] opacity-90
-hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed">
-  <slot></slot>
+<button {type} class="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2 duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-600 shadow-lg focus:shadow">
+	<slot></slot>
 </button>
+
 
 

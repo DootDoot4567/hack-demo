@@ -3,6 +3,7 @@ import { deleteApp, getApp, getApps, initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { getAuth, setPersistence, inMemoryPersistence } from 'firebase/auth'
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_APIKEY,
@@ -12,6 +13,7 @@ const firebaseConfig = {
     messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
     appId: import.meta.env.VITE_APPID
 };
+
 // Initialize Firebase
 let firebaseApp;
 if (!getApps().length) {
@@ -21,4 +23,5 @@ if (!getApps().length) {
     deleteApp(firebaseApp)
     firebaseApp = initializeApp(firebaseConfig)
 }
+
 export const auth = getAuth(firebaseApp)
