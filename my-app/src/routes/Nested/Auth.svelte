@@ -85,19 +85,5 @@
 				{register ? 'Already have an account? Log in' : "Don't have an account? Sign up"}
 			</p>
 		</div>
-
-		<!-- Forgot Password -->
-		{#if !register}
-			<div class="text-center mt-2">
-				<p
-					role="button"
-					tabindex="0"
-					on:click={() => authHandlers.resetPassword(email)}
-					class="text-gray-500 hover:underline cursor-pointer"
-				>
-					Forgot Password?
-				</p>
-			</div>
-		{/if}
 	</div>
 </div>

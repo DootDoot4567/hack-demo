@@ -1,9 +1,24 @@
 <script>
     import NavBar from "../Nested/navigation.svelte"
+	import { auth } from '../../lib/firebase/firebase.client';
+	import { authHandlers, authStore } from '../../stores/authStores';
+
+	let email;
+	authStore.subscribe((curr) => {
+		console.log('CURR', curr);
+		email = curr?.currentUser?.email;
+	});
 </script>
 
-<NavBar/>
+{#if $authStore.currentUser}
+	<div>
+		<h1>CURRENT USER: {email}</h1>
+        <button on:click={authHandlers.logout}>Logout</button>
+	</div>
+{/if}
 
+<!-- <NavBar/> -->
+<!-- 
 <div class="my-8 text-center text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r to-indigo-500 from-darkIndigo">
     Graphical Abstract
 </div>
@@ -53,4 +68,4 @@ Hormonal systems are integral to the regulation of complex traits and behaviors.
 </div>
 <div class="flex items-center justify-center">
     <img src="/UpdatedHandout.png" class="object-center w-3/4" alt="The Research Poster that is attributed to the model">
-</div>
+</div> -->

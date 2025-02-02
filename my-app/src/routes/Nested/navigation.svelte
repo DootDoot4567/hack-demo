@@ -14,49 +14,7 @@
     };
 
     onMount(() => {
-        if (typeof document !== 'undefined') {
-            // Select all dropdown toggle buttons
-            const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
 
-            dropdownToggles.forEach((toggle) => {
-                toggle.addEventListener("click", () => {
-                    // Find the next sibling element which is the dropdown menu
-                    const dropdownMenu = toggle.nextElementSibling;
-
-                    // Toggle the 'hidden' class to show or hide the dropdown menu
-                    if (dropdownMenu.classList.contains("hidden")) {
-                        // Hide any open dropdown menus before showing the new one
-                        document.querySelectorAll(".dropdown-menu").forEach((menu) => {
-                            menu.classList.add("hidden");
-                        });
-
-                        dropdownMenu.classList.remove("hidden");
-                    } else {
-                        dropdownMenu.classList.add("hidden");
-                    }
-                });
-            });
-
-            // Optional: Clicking outside of an open dropdown menu closes it
-            window.addEventListener("click", (event) => {
-                if (!event.target.matches(".dropdown-toggle")) {
-                    document.querySelectorAll(".dropdown-menu").forEach((menu) => {
-                        if (!menu.contains(event.target)) {
-                            menu.classList.add("hidden");
-                        }
-                    });
-                }
-            });
-
-            // Mobile menu toggle
-            const mobileMenuButton = document.querySelector(".mobile-menu-button");
-            const mobileMenu = document.querySelector(".navigation-menu");
-
-            mobileMenuButton.addEventListener("click", () => {
-                mobileMenu.classList.toggle("hidden");
-                document.body.classList.toggle("menu-open", !mobileMenu.classList.contains("hidden"));
-            });
-        }
     });
 
     $: if (isOpen) {
@@ -101,6 +59,11 @@
                             Log In
                         </button>
                     </li>
+                    <li class="md:px-4 md:py-2 hover:text-indigo-600 text-xl">
+                        <button on:click={toggleLogin} class="focus:outline-none">
+                            Log Out
+                        </button>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -110,30 +73,6 @@
             <a href="/" class="" style="top: 0;">
                 <img src="/HM.png" alt="Blue Bird" class="w-32 h-32 object-cover" style="margin-top: -20px;"> 
             </a>
-        </div>
-        <div class="sm:hidden flex items-center absolute left-5">
-            <button class="mobile-menu-button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                    <title>bars-3-bottom-left</title>
-                    <g fill="none">
-                        <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </g>
-                </svg>
-            </button>
-        </div>
-        <div class="hidden sm:flex sm:flex-row flex-col items-center justify-start sm:space-x-1 navigation-menu pb-3 sm:pb-0 absolute right-0 top-16 bg-gray-100 w-full sm:w-auto z-40 p-5">
-           <li class="{$page.url.pathname == '/about' ? 'text-indigo-500' : ''} md:px-4 md:py-2 hover:text-indigo-600 text-xl block">
-                        <a href="/about">About</a>
-                    </li>
-                    <li class="{$page.url.pathname == '/research' ? 'text-indigo-500' : ''} md:px-4 md:py-2 hover:text-indigo-600 text-xl block">
-                        <a href="/research">Research</a>
-                    </li>
-                    <li class="{$page.url.pathname == '/single-run' ? 'text-indigo-500' : ''} md:px-4 md:py-2 hover:text-indigo-600 text-xl block">
-                        <a href="/single-run">Single Run</a>
-                    </li>
-                    <li class="{$page.url.pathname == '/multi-run' ? 'text-indigo-500' : ''} md:px-4 md:py-2 hover:text-indigo-600 text-xl block">
-                        <a href="/multi-run">Multi Run</a>
-                    </li>
         </div>
     </div>
 </nav>
