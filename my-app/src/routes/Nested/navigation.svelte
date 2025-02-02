@@ -93,7 +93,7 @@
             <div class="text-gray-500 w-full md:w-auto md:flex-1">
                 <ul class="flex flex-row gap-8 font-semibold justify-center md:justify-center w-full py-4">
                     <li class="{$page.url.pathname == '/about' ? 'text-indigo-500' : ''} md:px-4 md:py-2 hover:text-indigo-600 text-xl">
-                        <a href="/about">About</a>
+                        <a href="/about">About Us</a>
                     </li>
                     {#if !$authStore.currentUser}
                         <li>
@@ -102,6 +102,9 @@
                     {:else}
                         <li class="{$page.url.pathname == '/home' ? 'text-indigo-500' : ''} md:px-4 md:py-2 hover:text-indigo-600 text-xl">
                             <a href="/home">Home</a>
+                        </li>
+                        <li class="{$page.url.pathname == '/milestone' ? 'text-indigo-500' : ''} md:px-4 md:py-2 hover:text-indigo-600 text-xl">
+                            <a href="/milestone">Milestone</a>
                         </li>
                         <li>
                             <p>CURRENT USER: {email}</p>

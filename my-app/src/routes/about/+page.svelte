@@ -79,7 +79,7 @@
     <!-- Call to Action -->
     <section class="mt-12 text-center">
       <h3 class="text-lg text-gray-600">Live life better with us:</h3>
-      <button on:click={() => window.location.href = '/signup'} class="mt-4 bg-green-500 text-white py-2 px-6 rounded-lg text-lg hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-green-300">
+      <button on:click={() => window.location.href = '/'} class="mt-4 bg-green-500 text-white py-2 px-6 rounded-lg text-lg hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-green-300">
         Get Started
       </button>
     </section>

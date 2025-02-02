@@ -21,9 +21,7 @@
     
     <div>
         <slot name="header" />
-        <hr />
         <slot />
-        <hr />
 
         <!-- Close Button with SVG -->
         <button
