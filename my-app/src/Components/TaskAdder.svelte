@@ -34,12 +34,12 @@
  </script>
  <Card>
    <header class="max-[400px]: margin-auto ">
-     <h2 class="text-xl font-semibold text-center">What tasks are today?</h2>
+     <h2 class="text-xl font-semibold text-center">Your tasks:</h2>
    </header>
    <form on:submit|preventDefault = {handleSubmit}>
    <div class="text-black border-0 rounded-md px-5 py-2 bg-blue-500 text-base cursor-pointer transition-colors duration-300 ease-in-out hover:bg-blue-700">
      <input type="text" on:input={handleInput} bind:value = {text} placeholder="Lets be productive">
-     <Button disabled={btnDisabled} type="submit">Send</Button>
+     <Button disabled={btnDisabled} type="submit">Submit</Button>
    </div>
    <TimePicker bind:time={selectedTime} />
    {#if message}
