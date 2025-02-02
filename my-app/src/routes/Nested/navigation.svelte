@@ -95,6 +95,9 @@
                     <li class="{$page.url.pathname == '/about' ? 'text-lime-500' : ''} md:px-4 md:py-2 hover:text-lime-600 text-xl">
                         <a href="/about">About</a>
                     </li>
+                    <!-- <li class="{$page.url.pathname == '/TestingDragndrop' ? 'text-lime-500' : ''} md:px-4 md:py-2 hover:text-lime-600 text-xl">
+                        <a href="/TestingDragndrop">bba</a>
+                    </li> -->
                     <li>
                         <Auth />
                     </li>

@@ -1,3 +1,3 @@
-<div class="relative bg-gray-300 rounded-2xl p-[40px] mt-[20px]">
+<div class="relative bg-lime-100 rounded-2xl p-[40px] my-3">
     <slot></slot>
 </div>

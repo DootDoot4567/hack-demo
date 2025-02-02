@@ -21,8 +21,11 @@ const deleteTask = (e) => {
 }
 </script>
 
-<main class="flex flex-col w-[100%] h-[100%] bg-transparent">
-    <TaskAdder on:add-task={addTask} />
-    <TaskStats {count} {finished}/>
-    <TaskList {task} on:delete-task={deleteTask} />
+<main class="flex flex-col w-[70%] h-[70%] bg-white">
+    <div class="overflow: auto">
+        <TaskAdder on:add-task={addTask} />
+        <TaskStats {count} {finished}/>
+        <TaskList {task} on:delete-task={deleteTask} />
+    </div>
+    
 </main> 
