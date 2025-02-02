@@ -2,6 +2,11 @@
     import { page } from '$app/stores';
     import { onMount } from 'svelte';
     import Login from "./Login.svelte"
+    import Auth from "./Auth.svelte"
+    import SignUp from './SignUp.svelte';
+    import {auth} from '../../lib/firebase/firebase.client.js'
+	import {authStore} from '../stores/authStores.js'
+
 
     let isOpen = false;
 
@@ -53,6 +58,12 @@
                 document.body.classList.toggle("menu-open", !mobileMenu.classList.contains("hidden"));
             });
         }
+        const unsubscribe = auth.onAuthStateChanged((user) => {
+		console.log(user)
+		authStore.update((curr) => {
+			return {...curr, isLoading: false, currentUser: user}
+		})
+		})
     });
 
     $: if (isOpen) {
@@ -86,10 +97,13 @@
                     <li class="{$page.url.pathname == '/about' ? 'text-indigo-500' : ''} md:px-4 md:py-2 hover:text-indigo-600 text-xl">
                         <a href="/about">About</a>
                     </li>
+                    <!-- <li>
+                        <Login />
+                    </li> -->
+                    <li>
+                        <Auth />
+                    </li>
                 </ul>
-            </div>
-            <Login />
-    </div>
     <!-- <div class="sm:h-16 h-20 mx-auto sm:px-4 container flex items-center justify-between flex-wrap sm:flex-nowrap sm:hidden block">
         <div class="flex justify-center w-full">
             <a href="/" class="" style="top: 0;">
