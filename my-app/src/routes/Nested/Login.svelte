@@ -3,7 +3,7 @@
     import Modal from './Modal.svelte';
 </script>
 
-<button class="text-gray-500 md:px-4 md:py-2 hover:text-indigo-600 text-xl font-semibold" on:click={() => modalState.update(state => ({ ...state, login: true }))}>
+<button class="text-gray-500 md:px-4 md:py-2 hover:text-lime-600 text-xl font-semibold" on:click={() => modalState.update(state => ({ ...state, login: true }))}>
     Log in
 </button>
 
@@ -11,7 +11,7 @@
     <!-- Flexbox container with rounded corners -->
     <div class="flex flex-col items-center justify-center w-[360px] h-[430px] bg-white rounded-lg shadow-lg">
         <!-- Modal Title-->
-        <h2 class="flex justify-center items-center text-green-700  font-mono- text-2xl italic font-bold ">
+        <h2 class="flex justify-center items-center text-green-600  font-mono- text-2xl italic font-bold ">
             <img src="Logo_hack@davsn.png" alt="Website Logo" width="100" height="100" />
             Sprout
         </h2>

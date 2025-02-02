@@ -91,15 +91,15 @@
         <div class="flex w-full items-center">
             <div class="text-gray-500 w-full md:w-auto md:flex-1">
                 <ul class="flex flex-row gap-8 font-semibold justify-center md:justify-center w-full py-4">
-                    <li class="{$page.url.pathname == '/home' ? 'text-indigo-500' : ''} md:px-4 md:py-2 hover:text-indigo-600 text-xl">
+                    <li class="{$page.url.pathname == '/home' ? 'text-lime-500' : ''} md:px-4 md:py-2 hover:text-lime-600 text-xl">
                         <a href="/home">Home</a>
                     </li>
-                    <li class="{$page.url.pathname == '/about' ? 'text-indigo-500' : ''} md:px-4 md:py-2 hover:text-indigo-600 text-xl">
+                    <li class="{$page.url.pathname == '/about' ? 'text-lime-500' : ''} md:px-4 md:py-2 hover:text-lime-600 text-xl">
                         <a href="/about">About</a>
                     </li>
                 </ul>
             </div>
-        <div >
+        <div>
             <Login />
         </div>
     <!-- <div class="sm:h-16 h-20 mx-auto sm:px-4 container flex items-center justify-between flex-wrap sm:flex-nowrap sm:hidden block">
