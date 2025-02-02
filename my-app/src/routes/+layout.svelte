@@ -1,4 +1,3 @@
-
 <script>
 	import "../app.css";
 	import { page } from '$app/stores';
@@ -29,10 +28,11 @@
 		});
 		return unsubscribe;
 	});
-
 </script>
-<!-- {@render children()} -->
+
 <div class="m-0 p-0">
-	<Navbar />
+	{#if $page.url.pathname !== '/'}
+		<Navbar />
+	{/if}
 	<slot />
 </div>

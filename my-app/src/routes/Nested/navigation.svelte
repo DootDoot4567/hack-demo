@@ -87,20 +87,44 @@
 <nav data-sveltekit-reload class="bg-gray-100 dark:bg-gray-100 shadow shadow-gray-300 w-full md:px-auto">
     <div class="flex flex-rpw h-20 items-center justify-between px-4">
         <a href="/" class="flex left-0" style="top: 0;">
-            <img src="/Logo_hack@davsn.png" alt="logo" class="w-16 h-auto object-cover"> 
+            <img src="/Logo_hack@davsn.png" alt="logo" class="w-16 h-auto object-cover">
         </a>
-        <div class="flex w-full items-center">
-            <div class="text-gray-500 w-full md:w-auto md:flex-1">
-                <ul class="flex flex-row gap-8 font-semibold justify-center md:justify-center w-full py-4">
-                    <li class="{$page.url.pathname == '/home' ? 'text-indigo-500' : ''} md:px-4 md:py-2 hover:text-indigo-600 text-xl">
-                        <a href="/home">Home</a>
-                    </li>
-                    <li class="{$page.url.pathname == '/about' ? 'text-indigo-500' : ''} md:px-4 md:py-2 hover:text-indigo-600 text-xl">
-                        <a href="/about">About</a>
-                    </li>
-                </ul>
-</nav>
+    <div class="flex w-full items-center">
 
+    <div class="text-gray-500 w-full md:w-auto md:flex-1">
+        <ul class="flex flex-row gap-8 font-semibold justify-center md:justify-center w-full py-4">
+            <li class="{$page.url.pathname == '/about' ? 'text-lime-500' : ''} md:px-4 md:py-2 hover:text-lime-600 text-xl">
+                <a href="/about">About Us</a>
+            </li>
+            {#if !$authStore.currentUser}
+                <li>
+                    <Auth />
+                </li>
+            {:else}
+                <li class="{$page.url.pathname == '/home' ? 'text-lime-500': ''} md:px-4 md:py-2 hover:text-lime-600 text-xl">
+                <a href="/home">Home</a>
+                </li>
+                <!-- <li class="{$page.url.pathname == '/milestone' ? 'text-indigo-500' : ''} md:px-4 md:py-2 hover:text-indigo-600 text-xl">
+                <a href="/milestone">milestone</a>
+                </li> -->
+                
+                <li class="relative group pt-[7px]">
+                    <!-- SVG Icon that will trigger hover -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-8 hover:text-gray-600 group">
+                        <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" clip-rule="evenodd" />
+                    </svg>
+                    
+                    <!-- Hidden text that will appear on hover -->
+                    <span class="absolute left-0 top-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gray-400 text-black px-3 py-2 rounded-md">
+                        {email}
+                    </span>
+                </li>
+                <li class="absolute right-0 md:px-4 md:py-2 hover:text-lime-500 text-xl">
+                    <button class="focus:outline-none" on:click={authHandlers.logout}>Logout</button>
+                </li>
+            {/if}
+        </ul>
+</nav>
 
 <!-- <div class="sm:h-16 h-20 mx-auto sm:px-4 container flex items-center justify-between flex-wrap sm:flex-nowrap sm:hidden block">
     <div class="flex justify-center w-full">
