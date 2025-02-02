@@ -3,15 +3,19 @@
     import { onMount } from 'svelte';
     import Login from "./Login.svelte"
     import Auth from "./Auth.svelte"
-    import SignUp from './SignUp.svelte';
     import {auth} from '../../lib/firebase/firebase.client.js'
 	import {authStore} from '../stores/authStores.js'
 
 
     let isOpen = false;
+    let isLogin = false;
 
     const toggleMenu = () => {
         isOpen = !isOpen;
+    };
+
+    const toggleLogin = () => {
+        isLogin = !isLogin;
     };
 
     onMount(() => {
@@ -97,37 +101,47 @@
                     <li class="{$page.url.pathname == '/about' ? 'text-indigo-500' : ''} md:px-4 md:py-2 hover:text-indigo-600 text-xl">
                         <a href="/about">About</a>
                     </li>
-                    <!-- <li>
-                        <Login />
-                    </li> -->
                     <li>
-                        <Auth />
+                        <Login />
+                    </li>
+                    <li class="md:px-4 md:py-2 hover:text-indigo-600 text-xl">
+                        <button on:click={toggleLogin} class="focus:outline-none">
+                            Log In
+                        </button>
+                    </li>
+                    <li class="md:px-4 md:py-2 hover:text-indigo-600 text-xl">
+                        <button on:click={toggleLogin} class="focus:outline-none">
+                            Log Out
+                        </button>
                     </li>
                 </ul>
-    <!-- <div class="sm:h-16 h-20 mx-auto sm:px-4 container flex items-center justify-between flex-wrap sm:flex-nowrap sm:hidden block">
-        <div class="flex justify-center w-full">
-            <a href="/" class="" style="top: 0;">
-                <img src="Logo.png" alt="Logo" class="w-64 h-auto object-cover" style="margin-top: -20px;"> 
-            </a>
-        </div>
-        <div class="sm:hidden flex items-center absolute left-5">
-            <button class="mobile-menu-button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                    <title>bars-3-bottom-left</title>
-                    <g fill="none">
-                        <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </g>
-                </svg>
-            </button>
-        </div> -->
-
-        <!-- <div class="hidden sm:flex sm:flex-row flex-col items-center justify-start sm:space-x-1 navigation-menu pb-3 sm:pb-0 absolute right-0 top-16 bg-gray-100 w-full sm:w-auto z-40 p-5">
-        <li class="{$page.url.pathname == '/home' ? 'text-indigo-500' : ''} md:px-4 md:py-2 hover:text-indigo-600 text-xl block">
-                        <a href="/home">home</a>
-                    </li>
-                    <li class="{$page.url.pathname == '/about' ? 'text-indigo-500' : ''} md:px-4 md:py-2 hover:text-indigo-600 text-xl block">
-                        <a href="/about">about</a>
-                    </li>
-        </div> -->
-    <!-- </div> -->
 </nav>
+{#if isLogin}
+<Auth />
+{/if}
+<!-- <div class="sm:h-16 h-20 mx-auto sm:px-4 container flex items-center justify-between flex-wrap sm:flex-nowrap sm:hidden block">
+    <div class="flex justify-center w-full">
+        <a href="/" class="" style="top: 0;">
+            <img src="Logo.png" alt="Logo" class="w-64 h-auto object-cover" style="margin-top: -20px;"> 
+        </a>
+    </div>
+    <div class="sm:hidden flex items-center absolute left-5">
+        <button class="mobile-menu-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <title>bars-3-bottom-left</title>
+                <g fill="none">
+                    <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </g>
+            </svg>
+        </button>
+    </div> -->
+
+    <!-- <div class="hidden sm:flex sm:flex-row flex-col items-center justify-start sm:space-x-1 navigation-menu pb-3 sm:pb-0 absolute right-0 top-16 bg-gray-100 w-full sm:w-auto z-40 p-5">
+    <li class="{$page.url.pathname == '/home' ? 'text-indigo-500' : ''} md:px-4 md:py-2 hover:text-indigo-600 text-xl block">
+                    <a href="/home">home</a>
+                </li>
+                <li class="{$page.url.pathname == '/about' ? 'text-indigo-500' : ''} md:px-4 md:py-2 hover:text-indigo-600 text-xl block">
+                    <a href="/about">about</a>
+                </li>
+    </div> -->
+<!-- </div> -->
