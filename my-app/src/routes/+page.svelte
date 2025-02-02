@@ -1,54 +1,42 @@
-<!-- <script>
-    import Task from "./Nested/Task.svelte";
-
-</script> -->
 <script>
-    let title = "Welcome to Our Site!";
-    let subtitle = "We are glad you're here.";
+    let subtitle = "Grow your productivity one step at a time";
 </script>
   
-<main class="h-screen flex flex-col items-center justify-center bg-gradient-to-r from-purple-400 to-indigo-600 text-white">
-    <h1 class="text-5xl font-bold mb-4" tabindex="0">{title}</h1>
+<main class="h-screen flex flex-col items-center justify-center bg-gradient-to-r from-green-400 to-green-600 text-white">
     <p class="text-xl mb-8" tabindex="0">{subtitle}</p>
-	<a href="/about">
-		<button class="px-6 py-3 bg-white text-purple-700 font-semibold rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50" aria-label="Learn more about us">
-		Learn More
-		</button>
-	</a>
+    
+    <!-- Add the image with floating effect -->
+    <img src="/Logo_hack@davsn.png" alt="Hack@Davidson Logo" class="w-24 h-24 mb-8 animate-floating" />
+
+    <a href="/about">
+        <button class="px-6 py-3 bg-white text-green-700 font-semibold rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50 transform transition-all duration-200 ease-in-out hover:scale-110 hover:bg-green-700 hover:text-white" aria-label="Learn more about us">
+			Begin Your Journey with Sprout
+        </button>
+    </a>
 </main>
-  
 
-<!-- NPM install UUID -->
-<!-- <script>
-    import TaskList from '../Components/TaskList.svelte'
-    import TaskStats from '../Components/TaskStats.svelte'
-    import TaskAdder from '../Components/TaskAdder.svelte'
-  
-    
-    let task = [
-    
-]
-$: count = task.length
-$: finished = 0
-const addTask = (e) =>{
-    const newTask = e.detail
-    task = [newTask, ...task]
-}
-const deleteTask = (e) => {
-    const itemId = e.detail
-    task = task.filter((item => item.id != itemId))
-    finished++
-}
-</script>
+<style>
+    /* Define the floating animation */
+    @keyframes floating {
+        0% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-12px);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
 
-<main class="min-h-screen bg-red-700">
-    <TaskAdder on:add-task={addTask} />
-    <TaskStats {count} {finished}/>
-    <TaskList {task} on:delete-task={deleteTask} />
-</main> -->
+    /* Apply the floating animation */
+    .animate-floating {
+        animation: floating 3s ease-in-out infinite;
+    }
 
-<!-- <script>
-    import Task from "./Nested/Task.svelte";
-</script> 
-
-<Task/> -->
+    /* Grassy background with texture */
+    body {
+        background: url('https://www.publicdomainpictures.net/pictures/320000/velka/green-grass-texture-1560984536Mhj.jpg') center center no-repeat;
+        background-size: cover;
+    }
+</style>
