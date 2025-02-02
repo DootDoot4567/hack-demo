@@ -1,21 +1,15 @@
 <script>
     import { page } from '$app/stores';
     import { onMount } from 'svelte';
-    import Login from "./Login.svelte"
     import Auth from "./Auth.svelte"
     import {auth} from '../../lib/firebase/firebase.client.js'
 	import {authStore} from '../stores/authStores.js'
 
 
     let isOpen = false;
-    let isLogin = false;
 
     const toggleMenu = () => {
         isOpen = !isOpen;
-    };
-
-    const toggleLogin = () => {
-        isLogin = !isLogin;
     };
 
     onMount(() => {
@@ -102,23 +96,18 @@
                         <a href="/about">About</a>
                     </li>
                     <li>
-                        <Login />
+                        <Auth />
                     </li>
                     <li class="md:px-4 md:py-2 hover:text-indigo-600 text-xl">
-                        <button on:click={toggleLogin} class="focus:outline-none">
-                            Log In
-                        </button>
+                        
                     </li>
                     <li class="md:px-4 md:py-2 hover:text-indigo-600 text-xl">
-                        <button on:click={toggleLogin} class="focus:outline-none">
+                        <button class="focus:outline-none">
                             Log Out
                         </button>
                     </li>
                 </ul>
 </nav>
-{#if isLogin}
-<Auth />
-{/if}
 <!-- <div class="sm:h-16 h-20 mx-auto sm:px-4 container flex items-center justify-between flex-wrap sm:flex-nowrap sm:hidden block">
     <div class="flex justify-center w-full">
         <a href="/" class="" style="top: 0;">

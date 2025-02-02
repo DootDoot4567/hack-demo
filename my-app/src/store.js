@@ -4,4 +4,5 @@ export const modalState = writable({
     login: false,
     task: false,
     signup: false,
+    primaryLogin: false,
 });
