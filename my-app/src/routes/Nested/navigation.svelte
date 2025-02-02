@@ -86,7 +86,7 @@
 <nav data-sveltekit-reload class="bg-gray-100 dark:bg-gray-100 shadow shadow-gray-300 w-full md:px-auto">
     <div class="flex flex-rpw h-20 items-center justify-between px-4">
         <a href="/" class="flex left-0" style="top: 0;">
-            <img src="/Logo.png" alt="logo" class="w-16 h-auto object-cover"> 
+            <img src="/Logo_hack@davsn.png" alt="logo" class="w-16 h-auto object-cover"> 
         </a>
         <div class="flex w-full items-center">
             <div class="text-gray-500 w-full md:w-auto md:flex-1">
@@ -97,13 +97,11 @@
                     <li class="{$page.url.pathname == '/about' ? 'text-indigo-500' : ''} md:px-4 md:py-2 hover:text-indigo-600 text-xl">
                         <a href="/about">About</a>
                     </li>
-                    <!-- <li>
-                        <Login />
-                    </li> -->
-                    <li>
-                        <Auth />
-                    </li>
                 </ul>
+            </div>
+        <div >
+            <Login />
+        </div>
     <!-- <div class="sm:h-16 h-20 mx-auto sm:px-4 container flex items-center justify-between flex-wrap sm:flex-nowrap sm:hidden block">
         <div class="flex justify-center w-full">
             <a href="/" class="" style="top: 0;">
@@ -129,5 +127,5 @@
                         <a href="/about">about</a>
                     </li>
         </div> -->
-    <!-- </div> -->
+    </div>
 </nav>
