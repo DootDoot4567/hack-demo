@@ -84,7 +84,7 @@
 <nav data-sveltekit-reload class="bg-gray-100 dark:bg-gray-100 shadow shadow-gray-300 w-full md:px-auto">
     <div class="flex flex-rpw h-20 items-center justify-between px-4">
         <a href="/" class="flex left-0" style="top: 0;">
-            <img src="/Logo.png" alt="logo" class="w-16 h-auto object-cover"> 
+            <img src="/Logo_hack@davsn.png" alt="logo" class="w-16 h-auto object-cover"> 
         </a>
         <div class="flex w-full items-center">
             <div class="text-gray-500 w-full md:w-auto md:flex-1">

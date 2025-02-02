@@ -10,7 +10,7 @@
 
 <Modal modalKey="task">
     <div class="flex flex-col items-center justify-center w-[660px] h-[530px] bg-white rounded-lg shadow-lg pb-64">
-        <h2 class="text-xl font-semibold pt-4">Your Tasks</h2>
+        <h2 class="text-xl font-semibold pt-20">Task Manager</h2>
         <!-- Task content goes here -->
         <div class="">
             <Task/> 
