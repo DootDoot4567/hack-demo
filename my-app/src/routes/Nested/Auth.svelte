@@ -35,12 +35,15 @@
 </script>
 
 <button class="text-gray-500 md:px-4 md:py-2 hover:text-indigo-600 text-xl font-semibold" on:click={() => modalState.update(state => ({ ...state, login: true }))}>
-    Log in H
+   Log In
 </button>
 
 <Modal modalKey="login">
     <div class="flex flex-col items-center justify-center w-[360px] h-[450px] bg-white rounded-lg shadow-lg p-6">
-        <h2 class="text-xl font-semibold pt-2">{register ? 'Register' : 'Log In'}</h2>
+        <h2 class="flex justify-center items-center text-green-700  font-mono- text-2xl italic font-bold ">
+            <img src="Logo_hack@davsn.png" alt="Website Logo" width="100" height="100" />
+            Sprout
+        </h2>
 
         <div class="w-[75%] max-w-sm min-w-[200px] pt-4">
             <div class="flex flex-col space-y-4 relative">
