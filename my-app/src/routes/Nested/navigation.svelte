@@ -3,8 +3,13 @@
     import { onMount } from 'svelte';
     import Auth from "./Auth.svelte"
     import {auth} from '../../lib/firebase/firebase.client.js'
-	import {authStore} from '../stores/authStores.js'
+    import { authHandlers, authStore } from '../stores/authStores.js';
 
+	let email;
+	authStore.subscribe((curr) => {
+		console.log('CURR', curr);
+		email = curr?.currentUser?.email;
+	});
 
     let isOpen = false;
 
@@ -56,12 +61,10 @@
                 document.body.classList.toggle("menu-open", !mobileMenu.classList.contains("hidden"));
             });
         }
-        const unsubscribe = auth.onAuthStateChanged((user) => {
-		console.log(user)
-		authStore.update((curr) => {
-			return {...curr, isLoading: false, currentUser: user}
-		})
-		})
+        authStore.subscribe((curr) => {
+		console.log('CURR', curr);
+		email = curr?.currentUser?.email;
+	    });
     });
 
     $: if (isOpen) {
@@ -89,25 +92,28 @@
         <div class="flex w-full items-center">
             <div class="text-gray-500 w-full md:w-auto md:flex-1">
                 <ul class="flex flex-row gap-8 font-semibold justify-center md:justify-center w-full py-4">
-                    <li class="{$page.url.pathname == '/home' ? 'text-indigo-500' : ''} md:px-4 md:py-2 hover:text-indigo-600 text-xl">
-                        <a href="/home">Home</a>
-                    </li>
                     <li class="{$page.url.pathname == '/about' ? 'text-indigo-500' : ''} md:px-4 md:py-2 hover:text-indigo-600 text-xl">
                         <a href="/about">About</a>
                     </li>
-                    <li>
-                        <Auth />
-                    </li>
-                    <li class="md:px-4 md:py-2 hover:text-indigo-600 text-xl">
-                        
-                    </li>
-                    <li class="md:px-4 md:py-2 hover:text-indigo-600 text-xl">
-                        <button class="focus:outline-none">
-                            Log Out
-                        </button>
-                    </li>
+                    {#if !$authStore.currentUser}
+                        <li>
+                            <Auth />
+                        </li>
+                    {:else}
+                        <li class="{$page.url.pathname == '/home' ? 'text-indigo-500' : ''} md:px-4 md:py-2 hover:text-indigo-600 text-xl">
+                            <a href="/home">Home</a>
+                        </li>
+                        <li>
+                            <p>CURRENT USER: {email}</p>
+                        </li>
+                        <li class="md:px-4 md:py-2 hover:text-indigo-600 text-xl">
+                            <button class="focus:outline-none" on:click={authHandlers.logout}>Logout</button>
+                        </li>
+                    {/if}
                 </ul>
 </nav>
+
+
 <!-- <div class="sm:h-16 h-20 mx-auto sm:px-4 container flex items-center justify-between flex-wrap sm:flex-nowrap sm:hidden block">
     <div class="flex justify-center w-full">
         <a href="/" class="" style="top: 0;">
