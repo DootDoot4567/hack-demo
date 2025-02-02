@@ -10,7 +10,7 @@
 <Modal modalKey="login">
     <!-- Flexbox container with rounded corners -->
     <div class="flex flex-col items-center justify-center w-[360px] h-[430px] bg-white rounded-lg shadow-lg">
-        <!-- Modal Title -->
+        <!-- Modal Title-->
         <h2 class="text-xl font-semibold pt-4">Log In</h2>
 
         <!-- Input container -->
